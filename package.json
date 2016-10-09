@@ -1,0 +1,63 @@
+{
+  "name": "progen",
+  "version": "1.0.0",
+  "description": "You'd think it's for protractor... but it's actually a ad for a Gillette shaving cream commercial... written in Angular 2",
+  "main": "main.js",
+  "scripts": {
+    "typings-install": "./node_modules/.bin/typings install",
+    "postinstall": "npm run typings-install",
+    "build": "./node_modules/.bin/webpack --inline --colors --progress --display-error-details --display-cached",
+    "build:prod": "./node_modules/.bin/webpack --progress --profile --colors --display-error-details --display-cached --optimize-occurence-order --optimize-dedupe",
+    "build:dist": "npm run build:prod && npm run electron",
+    "start": "./node_modules/.bin/webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 3333  --content-base app",
+    "electron": "npm run build && electron app",
+    "package:win": "./node_modules/electron-packager/cli.js app App --platform=win32 --arch=all --out=dist --overwrite --version='1.2.5'",
+    "package:linux": "electron-packager . --asar --asar-unpack=protocol-link.html --overwrite --platform=linux --arch=x64 --prune=true --out=dist",
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1337programming/ProGen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1337programming/ProGen/issues"
+  },
+  "homepage": "https://github.com/1337programming/ProGen",
+  "dependencies": {
+    "@angular/common": "^2.0.2",
+    "@angular/compiler": "^2.0.2",
+    "@angular/core": "^2.0.2",
+    "@angular/forms": "^2.0.2",
+    "@angular/http": "^2.0.2",
+    "@angular/platform-browser": "^2.0.2",
+    "@angular/platform-browser-dynamic": "^2.0.2",
+    "@angular/platform-server": "^2.0.2",
+    "@angular/router": "^3.0.2",
+    "core-js": "^2.4.1",
+    "rxjs": "^5.0.0-beta.12",
+    "zone.js": "^0.6.25"
+  },
+  "devDependencies": {
+    "codelyzer": "^1.0.0-beta.0",
+    "css-loader": "^0.25.0",
+    "electron-packager": "^8.1.0",
+    "electron-prebuilt": "^1.4.3",
+    "html-loader": "^0.4.4",
+    "node-sass": "^3.10.1",
+    "raw-loader": "^0.5.1",
+    "reflect-metadata": "^0.1.8",
+    "sass-loader": "^4.0.2",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.9.0",
+    "tslint": "^3.15.1",
+    "tslint-loader": "^2.1.5",
+    "typescript": "^2.0.3",
+    "typings": "^1.4.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-merge": "^0.14.1"
+  }
+}
