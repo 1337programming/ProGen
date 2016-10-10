@@ -48,3 +48,6 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+// Import other files
+require('./src/file-system');

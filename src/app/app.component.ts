@@ -4,7 +4,8 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app',
   template: `
-        <div (window:resize)="onWindowResize()">
+        <navbar></navbar>
+        <div (window:resize)="onWindowResize()" class="container-fluid">
             <router-outlet></router-outlet>
         </div>
             `

@@ -17,16 +17,21 @@ var webpackConfig = {
 
   plugins: [
     new ExtractTextPlugin('style.css'),
-    new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills'], minChunks: Infinity }),
+    new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills', 'head'], minChunks: Infinity }),
   ],
 
   module: {
     loaders: [
       { test: /\.ts$/,   loader: 'ts-loader' },
       { test: /\.html$/, loader: 'html-loader' },
-      { test: /\.scss$/,
+      { test: /\.(scss|css)$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?sourceMap')
       },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=build/[name].[ext]'},
+      { test: /\.(ttf|eot|svg|jpeg|jpg|gif|png|txt)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader?name=build/[name].[ext]'
+      }
     ]
   },
 

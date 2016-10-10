@@ -1,8 +1,17 @@
 import {Routes, RouterModule}   from '@angular/router';
 import {ModuleWithProviders}  from '@angular/core';
+import {DashboardComponent} from './dashboard.component';
+import {HomeComponent} from './components/home/home.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'}
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      {path: '', redirectTo: 'home', pathMatch: 'full'},
+      {path: 'home', component: HomeComponent}
+    ]
+  }
 ];
 
 

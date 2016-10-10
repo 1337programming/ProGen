@@ -11,6 +11,6 @@ let style = require('!!raw!sass!./views/home.scss');
 export class HomeComponent {
   
   constructor() {
-  };
+  }
   
 }

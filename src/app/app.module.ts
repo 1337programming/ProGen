@@ -6,21 +6,26 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 // Modules
 import {AppCommonModule} from './common/common.module';
+import {DashboardModule} from './modules/dashboard/dashboard.module';
 
 // Components
 import {AppComponent} from './app.component';
 
 // Services
+import {CommonService} from './common/services/common.service';
+import {DrawerService} from './modules/dashboard/components/drawer/services/drawer.service';
 
 // Routing
 import {routing, appRoutingProviders} from './app.router';
 
 @NgModule({
   imports: [
-    BrowserModule, ReactiveFormsModule, FormsModule, HttpModule, AppCommonModule, routing
+    BrowserModule, ReactiveFormsModule, FormsModule, HttpModule, AppCommonModule, DashboardModule, routing
   ],
   declarations: [AppComponent],
   providers: [
+    CommonService,
+    DrawerService,
     appRoutingProviders,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
